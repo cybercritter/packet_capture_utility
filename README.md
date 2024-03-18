@@ -1,7 +1,6 @@
 ![Pylint](https://github.com/cybercritter/packet_capture_utility/actions/workflows/pylint.yml/badge.svg)
 
----
-# packet_capture_utility
+# Packet Capture utility
 Capture packets from the IP stack
 ---
 
