@@ -41,10 +41,10 @@ app\
         packet_type.py
     logging\
         packt_log_json.py
-        packt_log_logger.py
+        packt_log_syslog.py
+        packt_logger.py
     utilities\
         __init__.py
-        packet_logger.py
         packet_data_processor.py
     main.py
     packet_capture_config.json
