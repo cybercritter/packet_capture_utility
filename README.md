@@ -1,5 +1,4 @@
-![Pylint]
-(https://github.com/cybercritter/packet_capture_utility/actions/workflows/pylint.yml/badge.svg)
+![Pylint](https://github.com/cybercritter/packet_capture_utility/actions/workflows/pylint.yml/badge.svg)
 
 ---
 # packet_capture_utility
