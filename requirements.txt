@@ -1,0 +1,7 @@
+pytest
+isort
+black
+flake8
+pytest-cov
+libpcap
+pylint
