@@ -1,7 +1,12 @@
 {
     "cSpell.words": [
-        "packt",
-        "pcktlib",
-        "tcpdump"
+      "errbuf",
+      "libpcap",
+      "lookupdev",
+      "packt",
+      "pcap",
+      "pcktlib",
+      "rfmon",
+      "tcpdump"
     ]
 }
