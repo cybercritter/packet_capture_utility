@@ -5,3 +5,5 @@ flake8
 pytest-cov
 libpcap
 pylint
+stack.py
+keyboard
