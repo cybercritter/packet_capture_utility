@@ -9,6 +9,8 @@
       "pcap",
       "pcktlib",
       "rfmon",
+      "savefile",
+      "setargtypes",
       "tcpdump"
     ]
 }

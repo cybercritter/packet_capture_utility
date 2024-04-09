@@ -1,9 +1,12 @@
+#
 pytest
+pytest-cov
+pylint
 isort
 black
 flake8
-pytest-cov
-libpcap
-pylint
+
+pyshark
+
 stack.py
 keyboard
