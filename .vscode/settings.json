@@ -1,16 +1,21 @@
 {
     "cSpell.words": [
+      "dstport",
       "errbuf",
       "IPPROTO",
       "KEYPRESSED",
       "libpcap",
       "lookupdev",
       "packt",
+      "packtlib",
       "pcap",
       "pcktlib",
+      "pyshark",
       "rfmon",
       "savefile",
       "setargtypes",
-      "tcpdump"
+      "srcport",
+      "tcpdump",
+      "tshark"
     ]
 }

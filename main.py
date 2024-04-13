@@ -1,21 +1,20 @@
-import pyshark
-import time
-import json
+"""main.py"""
+from packtlib.packt_capture import CustomPcap
 
-TIMEOUT = 15
-start = time.time()
-# Capture packets on the 'en0' interface
-capture = pyshark.LiveCapture(interface='en0')
+if __name__ == '__main__':
 
-# Loop to continuously capture and process packets
-for packet in capture.sniff_continuously():
-    print(f'Packet length: {len(packet)}')
-    print(f"Protocol: {packet.transport_layer}")
-    print(f"Ethernet Header: {packet['eth'].src}")
-    json.dump(packet, open("my.json", "w"))
+    pcap_test = CustomPcap('en0', timeout=30)
+    print(f'Starting Capture on interface: {pcap_test.iface}')
+    pcap_test.start_capture()
+    print('End Capture')
 
-    if time.time() - start > TIMEOUT:
-        break
+    print(f'Number of packets captured: {len(pcap_test.buffer)}')
 
-capture.clear()
-capture.close()
+    # for packet in pcap_test.buffer:
+    #     try:
+    #         print(pcap_test.get_packet_details(packet))
+    #     except AttributeError:
+    #         '''
+    #         if Attribute type is not in the attribute list, just ignore
+    #         the packet
+    #         '''
