@@ -7,78 +7,96 @@ import time
 from utilities.my_stack import CustomStack
 
 
-class CustomPcap():
+class CustomPcap:
+    """
+    A class for custom packet capture and analysis.
+
+    Attributes:
+        iface (str): The interface to capture packets from.
+        timeout (int): The timeout value for packet capture (default is 10 seconds).
+        buffer (list): A list to store captured packets.
+        stack (CustomStack): An instance of CustomStack for managing the buffer.
+        start_time (float): The start time of the capture process.
+
+    Methods:
+        empty (property): Check if the buffer stack is empty.
+        get_packet_details(packet): Get details of a packet.
+        _add_packet_to_buffer(packet): Add a packet to the buffer stack.
+        get_packet(): Remove and return the first packet from the buffer.
+        start_capture(): Start capturing packets and adding them to the buffer.
+    """
+
     def __init__(self, iface, timeout=10):
+        """
+        Initialize a CustomPcap object.
+
+        Args:
+            iface (str): The interface to capture packets from.
+            timeout (int, optional): The timeout value for packet capture (default is 10 seconds).
+        """
         self.buffer = []
         self.iface = iface
         self.timeout = timeout
-        self.capture = pyshark.LiveCapture(
-            interface=iface)
+        self.capture = pyshark.LiveCapture(interface=iface)
         self.stack = CustomStack()
         self.start_time = time.time()
 
     @property
     def empty(self):
         """
-        The empty function checks if the stack is empty.
-            :return: True if the stack is empty, False otherwise.
+        Check if the buffer stack is empty.
 
-        :param self: Represent the instance of the class
-        :return: True if the stack is empty and false otherwise
+        Returns:
+            bool: True if the buffer stack is empty, False otherwise.
         """
         return self.stack.isempty(self.buffer)
 
     def get_packet_details(self, packet):
         """
-        The get_packet_details function is designed to parse specific
-        details from an individual packet.
+        Get details of a packet, including protocol type,
+        source and destination addresses,
+        source and destination ports, and packet timestamp.
 
-        :param self: Represent the instance of the object itself
-        :param packet: Get the raw packet from either a pcap file or via
-                       live capture using tshark
-        :return: A string containing the packet:
-                 timestamp,
-                 protocol
-                 type,
-                 source address,
-                 source port,
-                 destination address
-                 destination port
+        Args:
+            packet: The packet for which to retrieve details.
+
+        Returns:
+            str: A formatted string containing the packet details.
         """
         protocol = packet.transport_layer
-        if hasattr(packet, 'ip'):
+        if hasattr(packet, "ip"):
             source_address = packet.ip.src
             source_port = packet[packet.transport_layer].srcport
             destination_address = packet.ip.dst
             destination_port = packet[packet.transport_layer].dstport
             packet_time = packet.sniff_time
-            return f'Packet Timestamp: {packet_time}' \
-                f'\nProtocol type: {protocol}' \
-                f'\nSource address: {source_address}' \
-                f'\nSource port: {source_port}' \
-                f'\nDestination address: {destination_address}' \
-                f'\nDestination port: {destination_port}\n'
+            return (
+                f"Packet Timestamp: {packet_time}"
+                f"\nProtocol type: {protocol}"
+                f"\nSource address: {source_address}"
+                f"\nSource port: {source_port}"
+                f"\nDestination address: {destination_address}"
+                f"\nDestination port: {destination_port}\n"
+            )
 
-    def _add_packet_to_buffer(self, packet):
+    def _add_packet_to_buffer(self, packet) -> None:
         """
-        The _add_packet_to_buffer function adds a packet to the buffer.
+        Adds a packet to the buffer stack.
 
-        :param self: Represent the instance of the class
-        :param packet: Add a packet to the buffer
-        :return: The packet that was added to the buffer
+        Args:
+            packet: The packet to add to the buffer stack.
+
+        Returns:
+            None
         """
         self.stack.push(stk=self.buffer, item=packet)
 
     def get_packet(self):
         """
-        The pop_packet function is used to remove the first packet
-        from the buffer.
+        Remove and return the first packet from the buffer.
 
-        The function returns a tuple of (packet, port) where
-        packet is a string and port is an integer.
-
-        :param self: Represent the instance of the class
-        :return: The packet at the head of the queue
+        Returns:
+            tuple: A tuple containing the packet and port number.
         """
         try:
             if not self.stack.isempty(self.buffer):
@@ -88,11 +106,7 @@ class CustomPcap():
 
     def start_capture(self):
         """
-        The start_capture function is the main function of this class.
-        It captures packets from a socket and adds them to the buffer.)
-
-        :param self: Refer to the object itself
-        :return: A generator object
+        Start capturing packets and adding them to the buffer.
         """
         try:
             print(f"Capturing packets for {self.timeout} seconds")
@@ -103,5 +117,3 @@ class CustomPcap():
         except packet.StopCapture as e:
             print(e)
         self.capture.close()
-
-        print()

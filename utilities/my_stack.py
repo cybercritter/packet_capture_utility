@@ -1,3 +1,19 @@
+"""
+A custom stack implementation in Python.
+
+Attributes:
+    None
+
+Methods:
+    isempty(stk: list) -> bool: Check if the stack is empty.
+    push(stk: list, item) -> tuple: Push an item onto the stack.
+    pop(stk: list): Pop an item from the stack.
+    peek(stk: list): Return the top item of the stack without removing it.
+    display(stk: list): Display the stack.
+
+Usage:
+    Use this class to create and manipulate a stack data structure.
+"""
 
 class CustomStack():
     def __init__(self):
@@ -5,15 +21,16 @@ class CustomStack():
 
     def isempty(self, stk: list) -> bool:
         """
-        The isempty function checks if the stack is empty.
-            Args:
-                stk (list): The stack to be checked.
-            Returns:
-                bool: True if the stack is empty, False otherwise.
+        Check if the stack is empty.
 
-        :param self: Refer to the class instance itself
-        :param stk: list: Check if the stack is empty
-        :return: A boolean value
+        Args:
+            stk (list): The stack to check.
+
+        Returns:
+            bool: True if the stack is empty, False otherwise.
+
+        Raises:
+            TypeError: If stk is not a list.
         """
         if not isinstance(stk, list):
             raise TypeError
@@ -25,15 +42,18 @@ class CustomStack():
 
     def push(self, stk: list, item) -> tuple:
         """
-        The push function takes a list and an item as arguments.
-        It then appends the item to the end of the list, and returns a tuple
-        containing the updated stack (list) and its top index.
+        Push an item onto the stack.
 
-        :param self: Allow the function to be called from within the class
-        :param stk: list: Specify the stack that we want to push an item onto
-        :param item: int: Specify the type of data that is being pushed
-                          onto the stack
-        :return: A tuple containing the stack and the top of the stack
+        Args:
+            stk (list): The stack to push the item onto.
+            item: The item to push onto the stack.
+
+        Returns:
+            tuple: A tuple containing the updated stack and the index of
+            the top element.
+
+        Raises:
+            TypeError: If stk is not a list.
         """
         if not isinstance(stk, list):
             raise TypeError
@@ -44,17 +64,17 @@ class CustomStack():
 
     def pop(self, stk: list):
         """
-        The pop function removes the top item from a stack.
-            Args:
-                stk (list): The stack to pop an item from.
-            Returns:
-                list, int, object: The new stack with the popped item removed,
-                                    the index of the new top of the stack and
-                                    a reference to that element in memory.
+        Pop an item from the stack.
 
-        :param self: Represent the instance of the class
-        :param stk: list: Specify the stack that is being used
-        :return: The stack, top and item
+        Args:
+            stk (list): The stack to pop the item from.
+
+        Returns:
+            tuple: A tuple containing the updated stack, the index of the
+            new top element, and the popped item.
+
+        Raises:
+            TypeError: If stk is not a list.
         """
         if not isinstance(stk, list):
             raise TypeError
@@ -71,12 +91,16 @@ class CustomStack():
 
     def peek(self, stk: list):
         """
-        The peek function returns the top element of a stack.
+        Return the top item of the stack without removing it.
 
-        :param self: Represent the instance of the class
-        :param stk: list: Specify the stack that is being passed to
-                          the function
-        :return: The last element of the stack
+        Args:
+            stk (list): The stack to peek at.
+
+        Returns:
+            Any: The top item of the stack.
+
+        Raises:
+            TypeError: If stk is not a list.
         """
         if not isinstance(stk, list):
             raise TypeError
@@ -89,14 +113,13 @@ class CustomStack():
 
     def display(self, stk: list):
         """
-        The display function prints the contents of a stack.
-            The top element is printed first, followed by each element
-            in descending order.
-            If the stack is empty, it prints &quot;stack is empty&quot;.
+        Display the stack.
 
-        :param self: Represent the instance of the class
-        :param stk: list: Pass the stack to the function
-        :return: Nothing
+        Args:
+            stk (list): The stack to display.
+
+        Raises:
+            TypeError: If stk is not a list.
         """
         if not isinstance(stk, list):
             raise TypeError
