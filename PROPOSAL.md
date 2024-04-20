@@ -3,13 +3,13 @@
 
 This app will capture packets from the IP/TCP/UDP stack and log them.<br>
 
-The packet header information and data will be processed and presented in user readable format.
+The packet summary will be processed and presented in user readable format.
 
 
 ## Requirements  
 JonA- From Discord Channel<br>
 
-**IF YOU ARE NOT PLANNING ON DOING THE DEFAULT PROJECT MENTIONED ABOVE, YOU NEED TO PLAN AND DISCUSS WHAT YOUR'RE DOING WITH ME BEFORE THIS THURSDAY**<br>
+**IF YOU ARE NOT PLANNING ON DOING THE DEFAULT PROJECT MENTIONED ABOVE, YOU NEED TO PLAN AND DISCUSS WHAT YOU'RE DOING WITH ME BEFORE THIS THURSDAY**<br>
 The main goals / requirements for the final project are to get you familiar with the following:
 1. Writing and using your own classes/objects
 2. File Input / Output
@@ -17,12 +17,12 @@ The main goals / requirements for the final project are to get you familiar with
 
 ---
 ## Project Requirements
-1. Connect to the IP stack via raw socket
+1. Connect to the IP stack via pyshark (wrapper around tshark)
 2. Process IP packet.
    
    * Determine packet type.
-   * Decode TCP/UDP packet header 
-   * Assign packet to data structure for future use (logging/console)
+   * Summarize packets
+   * Write packet summary to a log or JSON file
 3. Read configuration in JSON format
    * set if log to screen or JSON data file
 
@@ -34,13 +34,9 @@ The main goals / requirements for the final project are to get you familiar with
 app\
     pcktlib\
         __init__.py
-        ip_header.py
-        tcp_header.py
-        udp_header.py
-        packet_type.py
+        packet_capture.py
     logging\
         packt_log_json.py
-        packt_log_syslog.py
         packt_logger.py
     utilities\
         __init__.py

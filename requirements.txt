@@ -1,12 +1,1 @@
-#
-pytest
-pytest-cov
-pylint
-isort
-black
-flake8
-
-pyshark
-
-stack.py
-keyboard
+pyshark==0.6
