@@ -166,3 +166,4 @@ cython_debug/
 /.idea/inspectionProfiles/profiles_settings.xml
 /.idea/vcs.xml
 /images/
+packets.json
