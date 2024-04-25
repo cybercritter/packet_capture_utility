@@ -41,6 +41,8 @@ class Capture:
         self.packet_summary = []
         self.iface = iface
         self.timeout = timeout
+
+        print(f"Timeout: {self.timeout}")
         self.pcapture = None
         self.start_time = time.time()
 
@@ -65,7 +67,6 @@ class Capture:
                     "destination": packet.ip.dst,
                     "length": packet.length
                 }
-
             return None
         except TypeError:
             return None
@@ -110,4 +111,5 @@ class Capture:
             if time.time() - self.start_time >= self.timeout:
                 print()
                 break
+
             time2 = int(time.localtime().tm_sec)

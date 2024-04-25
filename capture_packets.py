@@ -12,9 +12,6 @@ Requirements:
 Usage:
 1. Ensure the required modules are installed. The required modules are in a requirements.txt file
 2. Run the script.
-
-Example:
-    $ python capture_packets.py -i eth0 -t 10 -o captured_packets.json
 """
 
 import argparse
@@ -41,9 +38,9 @@ if __name__ == '__main__':
     parser.add_argument('-i', '--interface', type=str,
                         help='Network interface name (e.g., eth0)', required=True)
     parser.add_argument('-t', '--timeout', type=int,
-                        help='Timeout duration in seconds', default=10)
+                        help='Timeout duration in seconds default 10 seconds', default=10)
     parser.add_argument('-o', '--output', type=str,
-                        help='Output JSON file path', default='pcap_files/packets.json')
+                        help='Output JSON file path: default is ./packets.json', default='packets.json')
 
     args = parser.parse_args()
 
