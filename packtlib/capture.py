@@ -3,7 +3,6 @@ This class handles capturing the packets from the IP self.stack.
 Packets captured will be only IP packets
 """
 import time
-
 import pyshark
 
 
@@ -42,7 +41,7 @@ class Capture:
         self.packet_summary = []
         self.iface = iface
         self.timeout = timeout
-        self.capture = None
+        self.pcapture = None
         self.start_time = time.time()
 
     @staticmethod
@@ -96,9 +95,9 @@ class Capture:
         Starts capturing packets continuously until the timeout is reached.
         """
         time2 = time.localtime().tm_sec
-        self.capture = pyshark.LiveCapture(interface=self.iface)
+        self.pcapture = pyshark.LiveCapture(interface=self.iface)
 
-        for packet in self.capture.sniff_continuously():
+        for packet in self.pcapture.sniff_continuously():
 
             # when a packet is captured
             self.packet_summary.append(self.add_packet_to_buffer(packet))
