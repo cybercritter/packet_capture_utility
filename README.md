@@ -33,8 +33,7 @@ Linux should be supported but is untested
 
 ## Help and examples of use
 ```bash
-$ python capture_packets.py -i Ethernet -t 10 -o captured_packets.json
-PS C:\Users\cyber\Documents\projects\packet_capture_utility> python.exe .\capture_packets.py -h
+PS C:\Users\cyber\Documents\projects\packet_capture_utility> python .\capture_packets.py -h
 usage: capture_packets.py [-h] -i INTERFACE [-t TIMEOUT] [-o OUTPUT]
 
 Capture packets from a specified network interface and write packet summary for ip layer packets to a JSON file.
@@ -54,6 +53,5 @@ $ python capture_packets.py -i en0 -t 10 -o captured_packets.json
 
 Windows
 $ python capture_packets.py -i Ethernet -t 10 -o captured_packets.json
-PS C:\Users\cyber\Documents\projects\packet_capture_utility>
 ```
 
