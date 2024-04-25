@@ -1,1 +1,5 @@
+pylint
+pytest
+flake8
+black
 pyshark==0.6
